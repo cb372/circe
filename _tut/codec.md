@@ -115,20 +115,20 @@ Greeting("Hey", Person("Chris"), 3).asJson
 2. Generic derivation may not work as expected when the type definitions that you're trying to
    derive instances for are at the same level as the attempted derivation. For example:
 
-    ```
-    scala> import io.circe.Decoder, io.circe.generic.auto._
-    import io.circe.Decoder
-    import io.circe.generic.auto._
+   ```scala
+   scala> import io.circe.Decoder, io.circe.generic.auto._
+   import io.circe.Decoder
+   import io.circe.generic.auto._
 
-    scala> sealed trait A; case object B extends A; object X { val d = Decoder[A] }
-    defined trait A
-    defined object B
-    defined object X
+   scala> sealed trait A; case object B extends A; object X { val d = Decoder[A] }
+   defined trait A
+   defined object B
+   defined object X
 
-    scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
-    <console>:19: error: could not find implicit value for parameter d: io.circe.Decoder[X.A]
-           object X { sealed trait A; case object B extends A; val d = Decoder[A] }
-    ```
+   scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
+   <console>:19: error: could not find implicit value for parameter d: io.circe.Decoder[X.A]
+          object X { sealed trait A; case object B extends A; val d = Decoder[A] }
+   ```
 
    This is unfortunately a limitation of the macro API that Shapeless uses to derive the generic
    representation of the sealed trait. You can manually define these instances, or you can arrange
