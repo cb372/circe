@@ -93,4 +93,8 @@ I'd like to provide more complete test coverage (in part via [Discipline][discip
 early days for this.
 
 ### Performance
+
+circe is developed with a focus on performance. See the [Performance](performance.html) page for
+details.
+
 {% include references.md %}
