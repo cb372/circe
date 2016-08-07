@@ -111,10 +111,11 @@ Greeting("Hey", Person("Chris"), 3).asJson
 1. Please note that generic derivation will not work on Scala 2.10 unless you've added the [Macro
    Paradise][paradise] plugin to your build. See the [quick start section on the home page]({{ site.baseurl }}/index.html#quick-start) 
    for details.
+
 2. Generic derivation may not work as expected when the type definitions that you're trying to
    derive instances for are at the same level as the attempted derivation. For example:
 
-   ```scala
+    ```scala
 scala> import io.circe.Decoder, io.circe.generic.auto._
 import io.circe.Decoder
 import io.circe.generic.auto._
@@ -127,18 +128,19 @@ defined object X
 scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
 <console>:19: error: could not find implicit value for parameter d: io.circe.Decoder[X.A]
        object X { sealed trait A; case object B extends A; val d = Decoder[A] }
-                                                                          ^
-   ```
+    ```
 
    This is unfortunately a limitation of the macro API that Shapeless uses to derive the generic
    representation of the sealed trait. You can manually define these instances, or you can arrange
    the sealed trait definition so that it is not in the same immediate scope as the attempted
    derivation (which is typically what you want, anyway).
+
 3. For large or deeply-nested case classes and sealed trait hierarchies, the generic derivation
    provided by the `generic` subproject may stack overflow during compilation, which will result in
    the derived encoders or decoders simply not being found. Increasing the stack size available to
    the compiler (e.g. with `sbt -J-Xss64m` if you're using SBT) will help in many cases, but we have
    at least [one report][very-large-adt] of a case where it doesn't.
+
 4. More generally, the generic derivation provided by the `generic` subproject works for a wide
    range of test cases, and is likely to _just work_ for you, but it relies on macros (provided by
    Shapeless) that rely on compiler functionality that is not always perfectly robust
@@ -146,19 +148,21 @@ scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
    problems, it's likely that they're not your fault. Please file an issue here or ask a question on
    the [Gitter channel][gitter], and we'll do our best to figure out whether the problem is
    something we can fix.
+
 5. When using the `io.circe.generic.JsonCodec` annotation, the following will not compile:
 
-   ```scala
+    ```scala
 import io.circe.generic.JsonCodec
 
 @JsonCodec sealed trait A
 case class B(b: String) extends A
 case class C(c: Int) extends A
-   ```
+    ```
 
    In cases like this it's necessary to define a companion object for the root type _after_ all of
    the leaf types:
-   ```scala
+
+    ```scala
 import io.circe.generic.JsonCodec
 
 @JsonCodec sealed trait A
@@ -166,7 +170,7 @@ case class B(b: String) extends A
 case class C(c: Int) extends A
 
 object A
-   ```
+    ```
 
    See [this issue][circe-251] for additional discussion (this workaround may not be necessary in
    future versions).

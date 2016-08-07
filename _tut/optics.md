@@ -16,6 +16,8 @@ dependency on `circe-optics` to your build:
 libraryDependencies += "io.circe" %% "circe-optics" % circeVersion
 ```
 
+Note that this will require your project to depend on both Scalaz and cats.
+
 TODO examples
 
 {% include references.md %}
