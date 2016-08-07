@@ -63,4 +63,34 @@ parse(badJson)
 // res0: cats.data.Xor[io.circe.ParsingFailure,io.circe.Json] = Left(io.circe.ParsingFailure: expected json value got y (line 1, column 1))
 ```
 
+There are a number of ways to extract the parse result from the `Xor`. For example you could pattern
+match on it:
+
+```scala
+import cats.data.Xor._
+// import cats.data.Xor._
+
+parse(rawJson) match {
+  case Left(failure) => println("Invalid JSON :(")
+  case Right(json) => println("Yay, got some JSON!")
+}
+// Yay, got some JSON!
+```
+
+Or use `getOrElse`:
+
+```scala
+val json: Json = parse(rawJson).getOrElse(Json.Null)
+// json: io.circe.Json =
+// {
+//   "foo" : "bar",
+//   "baz" : 123,
+//   "list of stuff" : [
+//     4,
+//     5,
+//     6
+//   ]
+// }
+```
+
 {% include references.md %}
