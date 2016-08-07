@@ -1025,28 +1025,6 @@ either a JSON array or an object.</p>
       </a>
     </span>
       
-    </li><li name="io.circe.refined" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="refined"></a>
-      <a id="refined:refined"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="refined$.html"><span class="name">refined</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#io.circe.package@refined" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Provides codecs for <a href="https://github.com/fthomas/refined" target="_blank">refined</a> types.</p><div class="fullcomment"><div class="comment cmt"><p>Provides codecs for <a href="https://github.com/fthomas/refined" target="_blank">refined</a> types.</p><p>A refined type <code>T Refined Predicate</code> is encoded as <code>T</code>. Decoding ensures that the
-decoded value satisfies <code>Predicate</code>.</p><p>E.g. with generic codecs</p><pre><span class="kw">case</span> <span class="kw">class</span> Obj(
-  i: <span class="std">Int</span> Refined Positive
-)
-
-Obj(refineMV(<span class="num">4</span>)).asJson.noSpaces == <span class="lit">""</span><span class="lit">"{"</span>i<span class="lit">":4}"</span><span class="lit">""</span></pre></div></div>
     </li><li name="io.circe.scalajs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="scalajs"></a>
       <a id="scalajs:scalajs"></a>

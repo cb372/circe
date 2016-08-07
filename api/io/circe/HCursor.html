@@ -125,7 +125,7 @@
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">M</span><span class="tparams">[<span name="x">x<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> = <span class="extype" name="cats.Functor">Functor</span>[<span class="extype" name="io.circe.HCursor.M.x">x</span>]</span>
+        <span class="name">M</span><span class="tparams">[<span name="x">x<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> = <a href="http://typelevel.org/cats/api/index.html#cats.Functor" class="extype" target="_top">Functor</a>[<span class="extype" name="io.circe.HCursor.M.x">x</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#io.circe.HCursor@M[x[_]]=cats.Functor[x]" title="Permalink" target="_top">
@@ -910,6 +910,25 @@ matches the given predicate.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.circe.GenericCursor#getOrElse" visbl="pub" data-isabs="false" fullComment="yes" group="Decoding">
+      <a id="getOrElse[A](k:String)(fallback:=&gt;A)(implicitd:io.circe.Decoder[A]):io.circe.Decoder.Result[A]"></a>
+      <a id="getOrElse[A](String)(⇒A)(Decoder[A]):Decoder.Result[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOrElse</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="k">k: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="fallback">fallback: ⇒ <span class="extype" name="io.circe.GenericCursor.getOrElse.A">A</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="d">d: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="io.circe.GenericCursor.getOrElse.A">A</span>]</span>)</span><span class="result">: <a href="Decoder$.html#Result[A]=cats.data.Xor[io.circe.DecodingFailure,A]" class="extmbr" name="io.circe.Decoder.Result">Decoder.Result</a>[<span class="extype" name="io.circe.GenericCursor.getOrElse.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.HCursor@getOrElse[A](k:String)(fallback:=&gt;A)(implicitd:io.circe.Decoder[A]):io.circe.Decoder.Result[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Attempt to decode the value at the given key in a JSON object as an <code>A</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Attempt to decode the value at the given key in a JSON object as an <code>A</code>.
+If the field <code>k</code> is missing, then use the <code>fallback</code> instead.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericCursor.html" class="extype" name="io.circe.GenericCursor">GenericCursor</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -1461,7 +1480,7 @@ large structures (in contrast with recursively binding).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withFocusM</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="f">f: (<a href="Json.html" class="extype" name="io.circe.Json">Json</a>) ⇒ <span class="extype" name="io.circe.HCursor.withFocusM.F">F</span>[<a href="Json.html" class="extype" name="io.circe.Json">Json</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="cats.Functor">Functor</span>[<span class="extype" name="io.circe.HCursor.withFocusM.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="io.circe.HCursor.withFocusM.F">F</span>[<a href="" class="extype" name="io.circe.HCursor">HCursor</a>]</span>
+        <span class="name">withFocusM</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="f">f: (<a href="Json.html" class="extype" name="io.circe.Json">Json</a>) ⇒ <span class="extype" name="io.circe.HCursor.withFocusM.F">F</span>[<a href="Json.html" class="extype" name="io.circe.Json">Json</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="http://typelevel.org/cats/api/index.html#cats.Functor" class="extype" target="_top">Functor</a>[<span class="extype" name="io.circe.HCursor.withFocusM.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="io.circe.HCursor.withFocusM.F">F</span>[<a href="" class="extype" name="io.circe.HCursor">HCursor</a>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#io.circe.HCursor@withFocusM[F[_]](f:io.circe.Json=&gt;F[io.circe.Json])(implicitevidence$1:cats.Functor[F]):F[io.circe.HCursor]" title="Permalink" target="_top">

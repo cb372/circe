@@ -225,6 +225,24 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.circe.Decoder#const" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="const[A](a:A):io.circe.Decoder[A]"></a>
+      <a id="const[A](A):Decoder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">const</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="a">a: <span class="extype" name="io.circe.Decoder.const.A">A</span></span>)</span><span class="result">: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="io.circe.Decoder.const.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.Decoder$@const[A](a:A):io.circe.Decoder[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Create a decoder that always returns a single value, useful with some flatMap situations
+</p>
     </li><li name="io.circe.Decoder#decodeBigDecimal" visbl="pub" data-isabs="false" fullComment="yes" group="Decoding">
       <a id="decodeBigDecimal:io.circe.Decoder[BigDecimal]"></a>
       <a id="decodeBigDecimal:Decoder[BigDecimal]"></a>
@@ -1078,6 +1096,23 @@ number.
       </a>
     </span>
       <p class="shortcomment cmt"></p>
+    </li><li name="io.circe.Decoder#enumDecoder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="enumDecoder[E&lt;:Enumeration](enum:E):io.circe.Decoder[E#Value]"></a>
+      <a id="enumDecoder[E&lt;:Enumeration](E):Decoder[Decoder.enumDecoder.E.Value]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enumDecoder</span><span class="tparams">[<span name="E">E &lt;: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Enumeration" class="extype" target="_top">Enumeration</a></span>]</span><span class="params">(<span name="enum">enum: <span class="extype" name="io.circe.Decoder.enumDecoder.E">E</span></span>)</span><span class="result">: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="scala.Enumeration.Value">Decoder.enumDecoder.E.Value</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.Decoder$@enumDecoder[E&lt;:Enumeration](enum:E):io.circe.Decoder[E#Value]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -1611,6 +1646,25 @@ number.
       </a>
     </span>
       <p class="shortcomment cmt">Construct an instance from a function.</p>
+    </li><li name="io.circe.Decoder#instanceTry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="instanceTry[A](f:io.circe.HCursor=&gt;scala.util.Try[A]):io.circe.Decoder[A]"></a>
+      <a id="instanceTry[A]((HCursor)⇒Try[A]):Decoder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">instanceTry</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="f">f: (<a href="HCursor.html" class="extype" name="io.circe.HCursor">HCursor</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<span class="extype" name="io.circe.Decoder.instanceTry.A">A</span>]</span>)</span><span class="result">: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="io.circe.Decoder.instanceTry.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.Decoder$@instanceTry[A](f:io.circe.HCursor=&gt;scala.util.Try[A]):io.circe.Decoder[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is for easier interop with code that already returns Try.</p><div class="fullcomment"><div class="comment cmt"><p>This is for easier interop with code that already returns Try. You should
+prefer instance for any new code.
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -1838,31 +1892,7 @@ number.
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="io.circe.Decoder#failWith" visbl="pub" data-isabs="false" fullComment="yes" group="Utilities">
-      <a id="failWith[A](message:String):io.circe.Decoder[A]"></a>
-      <a id="failWith[A](String):Decoder[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.4.0) Use failedWithMessage">failWith</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="io.circe.Decoder.failWith.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#io.circe.Decoder$@failWith[A](message:String):io.circe.Decoder[A]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Construct an instance that always fails with the given error message.</p><div class="fullcomment"><div class="comment cmt"><p>Construct an instance that always fails with the given error message.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.4.0)</i> Use failedWithMessage</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
