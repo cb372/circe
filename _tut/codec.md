@@ -116,18 +116,18 @@ Greeting("Hey", Person("Chris"), 3).asJson
    derive instances for are at the same level as the attempted derivation. For example:
 
     ```scala
-scala> import io.circe.Decoder, io.circe.generic.auto._
-import io.circe.Decoder
-import io.circe.generic.auto._
+    scala> import io.circe.Decoder, io.circe.generic.auto._
+    import io.circe.Decoder
+    import io.circe.generic.auto._
 
-scala> sealed trait A; case object B extends A; object X { val d = Decoder[A] }
-defined trait A
-defined object B
-defined object X
+    scala> sealed trait A; case object B extends A; object X { val d = Decoder[A] }
+    defined trait A
+    defined object B
+    defined object X
 
-scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
-<console>:19: error: could not find implicit value for parameter d: io.circe.Decoder[X.A]
-       object X { sealed trait A; case object B extends A; val d = Decoder[A] }
+    scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
+    <console>:19: error: could not find implicit value for parameter d: io.circe.Decoder[X.A]
+           object X { sealed trait A; case object B extends A; val d = Decoder[A] }
     ```
 
    This is unfortunately a limitation of the macro API that Shapeless uses to derive the generic
@@ -152,24 +152,24 @@ scala> object X { sealed trait A; case object B extends A; val d = Decoder[A] }
 5. When using the `io.circe.generic.JsonCodec` annotation, the following will not compile:
 
     ```scala
-import io.circe.generic.JsonCodec
+    import io.circe.generic.JsonCodec
 
-@JsonCodec sealed trait A
-case class B(b: String) extends A
-case class C(c: Int) extends A
-    ```
+    @JsonCodec sealed trait A
+    case class B(b: String) extends A
+    case class C(c: Int) extends A
+        ```
 
-   In cases like this it's necessary to define a companion object for the root type _after_ all of
-   the leaf types:
+       In cases like this it's necessary to define a companion object for the root type _after_ all of
+       the leaf types:
 
-    ```scala
-import io.circe.generic.JsonCodec
+        ```scala
+    import io.circe.generic.JsonCodec
 
-@JsonCodec sealed trait A
-case class B(b: String) extends A
-case class C(c: Int) extends A
+    @JsonCodec sealed trait A
+    case class B(b: String) extends A
+    case class C(c: Int) extends A
 
-object A
+    object A
     ```
 
    See [this issue][circe-251] for additional discussion (this workaround may not be necessary in
