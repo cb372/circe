@@ -13,8 +13,6 @@ Suppose we have the following JSON document:
 
 ```scala
 import io.circe._, io.circe.parser._
-// import io.circe._
-// import io.circe.parser._
 
 val json: String = """
   {
@@ -28,39 +26,8 @@ val json: String = """
     }
   }
 """
-// json: String =
-// "
-//   {
-//     "id": "c730433b-082c-4984-9d66-855c243266f0",
-//     "name": "Foo",
-//     "counts": [1, 2, 3],
-//     "values": {
-//       "bar": true,
-//       "baz": 100.001,
-//       "qux": ["a", "b"]
-//     }
-//   }
-// "
 
 val doc: Json = parse(json).getOrElse(Json.Null)
-// doc: io.circe.Json =
-// {
-//   "id" : "c730433b-082c-4984-9d66-855c243266f0",
-//   "name" : "Foo",
-//   "counts" : [
-//     1,
-//     2,
-//     3
-//   ],
-//   "values" : {
-//     "bar" : true,
-//     "baz" : 100.001,
-//     "qux" : [
-//       "a",
-//       "b"
-//     ]
-//   }
-// }
 ```
 
 ## Extracting data
@@ -70,7 +37,7 @@ root:
 
 ```scala
 val cursor: HCursor = doc.hcursor
-// cursor: io.circe.HCursor = io.circe.HCursor$$anon$6@676a7d74
+// cursor: io.circe.HCursor = io.circe.HCursor$$anon$6@3ea9e4f7
 ```
 
 We can then use [various operations][generic-cursor] to move the focus of the cursor around the
@@ -91,7 +58,7 @@ We can also use a cursor to modify JSON.
 ```scala
 val reversedNameCursor: ACursor =
   cursor.downField("name").withFocus(_.mapString(_.reverse))
-// reversedNameCursor: io.circe.ACursor = io.circe.ACursor$$anon$1@2d7ef82f
+// reversedNameCursor: io.circe.ACursor = io.circe.ACursor$$anon$1@6ef98e0f
 ```
 
 We can then return to the root of the document and return its value with `top`:
