@@ -115,7 +115,7 @@ Greeting("Hey", Person("Chris"), 3).asJson
 2. Generic derivation may not work as expected when the type definitions that you're trying to
    derive instances for are at the same level as the attempted derivation. For example:
 
-    ```scala
+    ```
     scala> import io.circe.Decoder, io.circe.generic.auto._
     import io.circe.Decoder
     import io.circe.generic.auto._
@@ -151,26 +151,26 @@ Greeting("Hey", Person("Chris"), 3).asJson
 
 5. When using the `io.circe.generic.JsonCodec` annotation, the following will not compile:
 
-    ```scala
-    import io.circe.generic.JsonCodec
+        ```scala
+        import io.circe.generic.JsonCodec
 
-    @JsonCodec sealed trait A
-    case class B(b: String) extends A
-    case class C(c: Int) extends A
+        @JsonCodec sealed trait A
+        case class B(b: String) extends A
+        case class C(c: Int) extends A
         ```
 
-       In cases like this it's necessary to define a companion object for the root type _after_ all of
-       the leaf types:
+    In cases like this it's necessary to define a companion object for the root type _after_ all of
+    the leaf types:
 
         ```scala
-    import io.circe.generic.JsonCodec
+        import io.circe.generic.JsonCodec
 
-    @JsonCodec sealed trait A
-    case class B(b: String) extends A
-    case class C(c: Int) extends A
+        @JsonCodec sealed trait A
+        case class B(b: String) extends A
+        case class C(c: Int) extends A
 
-    object A
-    ```
+        object A
+        ```
 
    See [this issue][circe-251] for additional discussion (this workaround may not be necessary in
    future versions).
