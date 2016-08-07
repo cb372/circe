@@ -44,11 +44,11 @@ The following open source projects are either built on circe or provide circe su
 
 The following projects provide examples, templates, or benchmarks that include circe:
 
-* https://github.com/alanphillips78/akka-http-microservice-blueprint
-* https://github.com/bneil/fcs_boilerplate
-* https://github.com/gvolpe/simple-http4s-api
-* https://github.com/notvitor/akka-http-circe-json-template
-* https://github.com/stephennancekivell/some-jmh-json-benchmarks-circe-jackson
+* [https://github.com/alanphillips78/akka-http-microservice-blueprint](https://github.com/alanphillips78/akka-http-microservice-blueprint)
+* [https://github.com/bneil/fcs_boilerplate](https://github.com/bneil/fcs_boilerplate)
+* [https://github.com/gvolpe/simple-http4s-api](https://github.com/gvolpe/simple-http4s-api)
+* [https://github.com/notvitor/akka-http-circe-json-template](https://github.com/notvitor/akka-http-circe-json-template)
+* [https://github.com/stephennancekivell/some-jmh-json-benchmarks-circe-jackson](https://github.com/stephennancekivell/some-jmh-json-benchmarks-circe-jackson)
 
 ## Adopters
 
