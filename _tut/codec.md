@@ -162,15 +162,15 @@ Greeting("Hey", Person("Chris"), 3).asJson
    In cases like this it's necessary to define a companion object for the root type _after_ all of
    the leaf types:
 
-        ```scala
-        import io.circe.generic.JsonCodec
+   ```scala
+   import io.circe.generic.JsonCodec
 
-        @JsonCodec sealed trait A
-        case class B(b: String) extends A
-        case class C(c: Int) extends A
+   @JsonCodec sealed trait A
+   case class B(b: String) extends A
+   case class C(c: Int) extends A
 
-        object A
-        ```
+   object A
+   ```
 
    See [this issue][circe-251] for additional discussion (this workaround may not be necessary in
    future versions).
