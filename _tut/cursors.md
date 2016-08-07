@@ -89,4 +89,13 @@ The result contains the original document with the `"name"` field reversed.
 
 Note that `Json` is immutable, so the original document is left unchanged.
 
+## Cursors
+
+TODO explain the difference between Cursor, HCursor and ACursor
+
+## Optics
+
+Optics are an alternative way to traverse JSON documents. See the [Optics page](optics.html) for
+more details.
+
 {% include references.md %}
