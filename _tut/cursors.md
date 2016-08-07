@@ -47,6 +47,11 @@ val baz: Decoder.Result[Double] =
   cursor.downField("values").downField("baz").as[Double]
 // baz: io.circe.Decoder.Result[Double] = Right(100.001)
 
+// You can also use `get[A](key)` as shorthand for `downField(key).as[A]`
+val baz2: Decoder.Result[Double] =
+  cursor.downField("values").get[Double]("baz")
+// baz2: io.circe.Decoder.Result[Double] = Right(100.001)
+
 val secondQux: Decoder.Result[String] =
   cursor.downField("values").downField("qux").downArray.right.as[String]
 // secondQux: io.circe.Decoder.Result[String] = Right(b)
