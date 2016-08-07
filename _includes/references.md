@@ -9,6 +9,7 @@
 [argonaut-shapeless]: https://github.com/alexarchambault/argonaut-shapeless
 [benchmarks]: https://github.com/travisbrown/circe/blob/master/benchmark/src/main/scala/io/circe/benchmark/Benchmark.scala
 [cats]: https://github.com/typelevel/cats
+[cats-xor]: http://typelevel.org/cats/tut/xor.html
 [circe-251]: https://github.com/travisbrown/circe/issues/251
 [circe-262]: https://github.com/travisbrown/circe/issues/262
 [circe-generic]: https://travisbrown.github.io/circe/api/#io.circe.generic.auto$

@@ -1,0 +1,58 @@
+# Parsing JSON
+
+Circe includes a parsing module, which is a wrapper around the [Jawn][jawn] JSON parser.
+
+Parsing is not part of the `circe-core` module, so you will need to include a dependency on the `circe-parser` module in your build:
+
+```scala
+libraryDependencies += "io.circe" %% "circe-parser" % circeVersion
+```
+
+Parsing is done as follows.
+
+```scala
+import io.circe._, io.circe.parser._
+// import io.circe._
+// import io.circe.parser._
+
+val rawJson: String = """
+{
+  "foo": "bar",
+  "baz": 123,
+  "list of stuff": [ 4, 5, 6 ]
+}
+"""
+// rawJson: String =
+// "
+// {
+//   "foo": "bar",
+//   "baz": 123,
+//   "list of stuff": [ 4, 5, 6 ]
+// }
+// "
+
+val parseResult = parse(rawJson)
+// parseResult: cats.data.Xor[io.circe.ParsingFailure,io.circe.Json] =
+// Right({
+//   "foo" : "bar",
+//   "baz" : 123,
+//   "list of stuff" : [
+//     4,
+//     5,
+//     6
+//   ]
+// })
+```
+
+Because parsing might fail, the result is a cats [Xor][cats-xor]. In the example above, the input
+was valid JSON, so the result was a `Right` containing the corresponding JSON representation.
+
+Let's see what happens when you try to parse invalid JSON:
+
+```scala
+val badJson: String = "yolo"
+// badJson: String = yolo
+
+parse(badJson)
+// res0: cats.data.Xor[io.circe.ParsingFailure,io.circe.Json] = Left(io.circe.ParsingFailure: expected json value got y (line 1, column 1))
+```
