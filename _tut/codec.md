@@ -115,7 +115,7 @@ Greeting("Hey", Person("Chris"), 3).asJson
 2. Generic derivation may not work as expected when the type definitions that you're trying to
    derive instances for are at the same level as the attempted derivation. For example:
 
-   ```scala
+   ```
    scala> import io.circe.Decoder, io.circe.generic.auto._
    import io.circe.Decoder
    import io.circe.generic.auto._
