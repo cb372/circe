@@ -16,3 +16,5 @@ circe's working title was jfc, which stood for "JSON for [cats][cats]". The name
 [a number of reasons](https://github.com/travisbrown/circe/issues/11).
 
 {% include_relative _tut/quickstart.md %}
+
+{% include references.md %}
