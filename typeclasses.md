@@ -3,7 +3,6 @@ layout: default
 title:  "Type Classes"
 section: "typeclasses"
 ---
-{% include_relative _tut/typeclasses.md %}
 
 {% for x in site.tut %}
 {% if x.section == 'typeclasses' %}
