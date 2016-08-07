@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Quick start"
-section: "tut"
+section: "quickstart"
 ---
 # Quick start
 

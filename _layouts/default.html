@@ -21,7 +21,7 @@
   <body>
     <div id="container">
       <div id="header">
-        <div id="commute"><!-- TODO Circe logo! --><img src="http://plastic-idolatry.com/erik/cats2.png"/></div>
+        <div id="commute"><!-- TODO circe logo! --><img src="http://plastic-idolatry.com/erik/cats2.png"/></div>
 	<div id="toolbox">
 	  <table id="tooltable">
 	    <tr><td class="label">Source:</td><td class="link"><a href="https://github.com/travisbrown/circe">Github</a></td></tr>
@@ -31,7 +31,7 @@
 	  </table>
 	</div>
 	<div id="banner">
-          <h1>Circe</h1>
+          <h1>circe</h1>
 	</div>
       </div>
       <div id="wrapper">
@@ -40,14 +40,20 @@
 	    <li {%if page.section =="home" %} class="active" {% else %} class="inactive" {% endif %}>
 	      <a href="{{ site.baseurl }}/index.html">About</a>
 	    </li>
-	    <li {%if page.section =="typeclasses" %} class="active" {% else %} class="inactive" {% endif%}>
-	      <a href="{{ site.baseurl }}/typeclasses.html">Type Classes</a>
+	    <li {%if page.section =="parsing" %} class="active" {% else %} class="inactive" {% endif %}>
+	      <a href="{{ site.baseurl }}/tut/parsing.html">Parsing JSON</a>
 	    </li>
-	    <li {%if page.section =="data" %} class="active" {% else %} class="inactive" {% endif %}>
-	      <a href="{{ site.baseurl }}/datatypes.html">Data Types</a>
+	    <li {%if page.section =="transforming" %} class="active" {% else %} class="inactive" {% endif %}>
+	      <a href="{{ site.baseurl }}/tut/transforming.html">Transforming JSON</a>
 	    </li>
-	    <li {%if page.title == "FAQ" %} class="active" {% else %} class="inactive" {% endif %}>
-	      <a href="{{ site.baseurl }}/tut/faq.html">FAQ</a>
+	    <li {%if page.section =="codec" %} class="active" {% else %} class="inactive" {% endif %}>
+	      <a href="{{ site.baseurl }}/tut/codec.html">Encoding and decoding</a>
+	    </li>
+	    <li {%if page.section =="optics" %} class="active" {% else %} class="inactive" {% endif %}>
+	      <a href="{{ site.baseurl }}/tut/optics.html">Optics</a>
+	    </li>
+	    <li {%if page.section =="community" %} class="active" {% else %} class="inactive" {% endif %}>
+	      <a href="{{ site.baseurl }}/community.html">Community</a>
 	    </li>
 	    <li {%if page.section =="contributing" %} class="active" {% else %} class="inactive"{% endif %}>
 	      <a href="{{ site.baseurl }}/contributing.html">Contributing</a>
