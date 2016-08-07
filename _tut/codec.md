@@ -151,13 +151,13 @@ Greeting("Hey", Person("Chris"), 3).asJson
 
 5. When using the `io.circe.generic.JsonCodec` annotation, the following will not compile:
 
-        ```scala
-        import io.circe.generic.JsonCodec
+    ```scala
+    import io.circe.generic.JsonCodec
 
-        @JsonCodec sealed trait A
-        case class B(b: String) extends A
-        case class C(c: Int) extends A
-        ```
+    @JsonCodec sealed trait A
+    case class B(b: String) extends A
+    case class C(c: Int) extends A
+    ```
 
     In cases like this it's necessary to define a companion object for the root type _after_ all of
     the leaf types:
