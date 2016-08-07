@@ -175,4 +175,10 @@ Greeting("Hey", Person("Chris"), 3).asJson
    See [this issue][circe-251] for additional discussion (this workaround may not be necessary in
    future versions).
 
+6. circe's representation of numbers is designed not to lose precision during decoding into integral
+   or arbitrary-precision types, but precision may still be lost during parsing. This shouldn't
+   happen when using Jawn for parsing, but `scalajs.js.JSON` parses JSON numbers into a floating
+   point representation that may lose precision (even when decoding into a type like `BigDecimal`;
+   see [this issue][circe-262] for an example).
+
 {% include references.md %}
