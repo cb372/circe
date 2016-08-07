@@ -1,8 +1,3 @@
----
-layout: default
-title:  "Quick start"
-section: "quickstart"
----
 # Quick start
 
 circe is published to [Maven Central][maven-central] and cross-built for Scala 2.10 and 2.11, so
