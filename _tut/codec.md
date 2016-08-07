@@ -34,7 +34,7 @@ implicit val fooDecoder: Decoder[Foo] = deriveDecoder
 implicit val fooEncoder: Encoder[Foo] = deriveEncoder
 ```
 
-## @JsonCodec
+### @JsonCodec
 
 circe-generic includes a `@JsonCodec` annotation that simplifies the use of semi-automatic generic derivation:
 
@@ -63,8 +63,6 @@ It's possible to construct encoders and decoders for case class-like types in a 
 without generic derivation:
 
 ```scala
-import io.circe._, io.circe.jawn._, io.circe.syntax._
-
 case class User(id: Long, firstName: String, lastName: String)
 
 object UserCodec {
@@ -81,5 +79,31 @@ object UserCodec {
 It's not as clean or as maintainable as generic derivation, but it's less magical, it requires nothing
 but circe-core, and if you need a custom name mapping it's currently the best solution
 (until configurable generic derivation is released in 0.5.0).
+
+## Fully automatic derivation
+
+It is also possible to derive `Encoder`s and `Decoder`s for many types with no boilerplate at all.
+circe uses [shapeless][shapeless] to automatically derive the necessary type class instances:
+
+```scala
+import io.circe.generic.auto._
+// import io.circe.generic.auto._
+
+case class Person(name: String)
+// defined class Person
+
+case class Greeting(salutation: String, person: Person, exclamationMarks: Int)
+// defined class Greeting
+
+Greeting("Hey", Person("Chris"), 3).asJson
+// res4: io.circe.Json =
+// {
+//   "salutation" : "Hey",
+//   "person" : {
+//     "name" : "Chris"
+//   },
+//   "exclamationMarks" : 3
+// }
+```
 
 {% include references.md %}
