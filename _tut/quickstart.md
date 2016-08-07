@@ -1,4 +1,4 @@
-# Quick start
+## Quick start
 
 circe is published to [Maven Central][maven-central] and cross-built for Scala 2.10 and 2.11, so
 you can just add the following to your build:
