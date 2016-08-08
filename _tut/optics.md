@@ -69,19 +69,19 @@ import io.circe.optics.JsonPath._
 // import io.circe.optics.JsonPath._
 
 val _phoneNum = root.order.customer.contactDetails.phone.string
-// _phoneNum: monocle.Optional[io.circe.Json,String] = monocle.POptional$$anon$1@31732fd1
+// _phoneNum: monocle.Optional[io.circe.Json,String] = monocle.POptional$$anon$1@62ee22a0
 
 val phoneNum: Option[String] = _phoneNum.getOption(json)
 // phoneNum: Option[String] = Some(0123-456-789)
 ```
 
 Note the difference between cursors and optics. With cursors, we start with a JSON document, get a 
-cursor from it, and use it to traverse the document. With optics, on the other hand, we first define 
-the traversal we want to make, then apply it to a JSON document.
+cursor from it, and then use that cursor to traverse the document. With optics, on the other hand, 
+we first define the traversal we want to make, then apply it to a JSON document.
 
 In other words, optics provide a way to separate the description of a JSON traversal from its
-execution. Consequently we can re-use the same traversal against many different documents, compose
-traversals together, etc.
+execution. Consequently we can reuse the same traversal against many different documents, compose
+traversals together, and so on.
 
 Let's look at a more complex example. This time we want to get the quantities of all the
 items in the order. Using a cursor it might look like this:
@@ -162,7 +162,7 @@ The result is a copy of the original JSON with only the `quantity` fields update
 ## Dynamic
 
 Some of the code above may look quite magical at first glance. How are we calling methods like
-`items` and `quantity` on circe's [JsonPath][jsonpath] class?
+`order`, `items` and `customer` on circe's [JsonPath][jsonpath] class?
 
 The answer is that `JsonPath` relies on a slightly obscure feature of Scala called `Dynamic`. This
 means you can call methods that don't actually exist. When you do so, the `selectDynamic` method is
