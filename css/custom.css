@@ -267,3 +267,7 @@ hr {
 h2:hover a:after {
     content: '§';
 }
+
+div.banner h1 {
+  margin-top: 0
+}
