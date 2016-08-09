@@ -69,7 +69,7 @@ import io.circe.optics.JsonPath._
 // import io.circe.optics.JsonPath._
 
 val _phoneNum = root.order.customer.contactDetails.phone.string
-// _phoneNum: monocle.Optional[io.circe.Json,String] = monocle.POptional$$anon$1@62ee22a0
+// _phoneNum: monocle.Optional[io.circe.Json,String] = monocle.POptional$$anon$1@3057994
 
 val phoneNum: Option[String] = _phoneNum.getOption(json)
 // phoneNum: Option[String] = Some(0123-456-789)
@@ -167,5 +167,20 @@ Some of the code above may look quite magical at first glance. How are we callin
 The answer is that `JsonPath` relies on a slightly obscure feature of Scala called `Dynamic`. This
 means you can call methods that don't actually exist. When you do so, the `selectDynamic` method is
 called, and the name of the method you wanted to call is passed as an argument.
+
+### Warning
+
+The use of Dynamic means that your code is not "typo-safe". For example, if you fat-finger the previous
+example:
+
+```scala
+val doubleQuantities: Json => Json =
+  root.order.itemss.each.quantity.int.modify(_ * 2) // Note the "itemss" typo
+
+val modifiedJson = doubleQuantities(json)
+```
+
+This code will compile just fine, but not do what you expect. Because the JSON document doesn't have
+an `itemss` field, the same document will be returned unmodified.
 
 {% include references.md %}
