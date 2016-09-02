@@ -534,6 +534,40 @@ number.
       </a>
     </span>
       <p class="shortcomment cmt"></p>
+    </li><li name="io.circe.Decoder#decodeNonEmptyList" visbl="pub" data-isabs="false" fullComment="no" group="Decoding">
+      <a id="decodeNonEmptyList[A](implicitda:io.circe.Decoder[A]):io.circe.Decoder[cats.data.NonEmptyList[A]]"></a>
+      <a id="decodeNonEmptyList[A](Decoder[A]):Decoder[NonEmptyList[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeNonEmptyList</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="da">da: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="io.circe.Decoder.decodeNonEmptyList.A">A</span>]</span>)</span><span class="result">: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<a href="http://typelevel.org/cats/api/index.html#cats.data.NonEmptyList" class="extype" target="_top">NonEmptyList</a>[<span class="extype" name="io.circe.Decoder.decodeNonEmptyList.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.Decoder$@decodeNonEmptyList[A](implicitda:io.circe.Decoder[A]):io.circe.Decoder[cats.data.NonEmptyList[A]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p>
+    </li><li name="io.circe.Decoder#decodeNonEmptyVector" visbl="pub" data-isabs="false" fullComment="no" group="Decoding">
+      <a id="decodeNonEmptyVector[A](implicitda:io.circe.Decoder[A]):io.circe.Decoder[cats.data.NonEmptyVector[A]]"></a>
+      <a id="decodeNonEmptyVector[A](Decoder[A]):Decoder[NonEmptyVector[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeNonEmptyVector</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="da">da: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="io.circe.Decoder.decodeNonEmptyVector.A">A</span>]</span>)</span><span class="result">: <a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>[<a href="http://typelevel.org/cats/api/index.html#cats.data.NonEmptyVector" class="extype" target="_top">NonEmptyVector</a>[<span class="extype" name="io.circe.Decoder.decodeNonEmptyVector.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.Decoder$@decodeNonEmptyVector[A](implicitda:io.circe.Decoder[A]):io.circe.Decoder[cats.data.NonEmptyVector[A]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p>
     </li><li name="io.circe.Decoder#decodeNone" visbl="pub" data-isabs="false" fullComment="no" group="Decoding">
       <a id="decodeNone:io.circe.Decoder[None.type]"></a>
       <a id="decodeNone:Decoder[None.type]"></a>
@@ -1092,6 +1126,23 @@ number.
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#io.circe.Decoder$@decodeXor[A,B](leftKey:String,rightKey:String)(implicitda:io.circe.Decoder[A],implicitdb:io.circe.Decoder[B]):io.circe.Decoder[cats.data.Xor[A,B]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p>
+    </li><li name="io.circe.Decoder#decoderInstances" visbl="pub" data-isabs="false" fullComment="no" group="Instances">
+      <a id="decoderInstances:cats.SemigroupK[io.circe.Decoder]withcats.MonadError[io.circe.Decoder,io.circe.DecodingFailure]"></a>
+      <a id="decoderInstances:SemigroupK[Decoder]withMonadError[Decoder,DecodingFailure]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decoderInstances</span><span class="result">: <a href="http://typelevel.org/cats/api/index.html#cats.SemigroupK" class="extype" target="_top">SemigroupK</a>[<a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>] with <a href="http://typelevel.org/cats/api/index.html#cats.MonadError" class="extype" target="_top">MonadError</a>[<a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>, <a href="DecodingFailure.html" class="extype" name="io.circe.DecodingFailure">DecodingFailure</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#io.circe.Decoder$@decoderInstances:cats.SemigroupK[io.circe.Decoder]withcats.MonadError[io.circe.Decoder,io.circe.DecodingFailure]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1682,23 +1733,6 @@ prefer instance for any new code.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.circe.Decoder#monadInstances" visbl="pub" data-isabs="false" fullComment="no" group="Instances">
-      <a id="monadInstances:cats.SemigroupK[io.circe.Decoder]withcats.MonadError[io.circe.Decoder,io.circe.DecodingFailure]"></a>
-      <a id="monadInstances:SemigroupK[Decoder]withMonadError[Decoder,DecodingFailure]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit final </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">monadInstances</span><span class="result">: <a href="http://typelevel.org/cats/api/index.html#cats.SemigroupK" class="extype" target="_top">SemigroupK</a>[<a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>] with <a href="http://typelevel.org/cats/api/index.html#cats.MonadError" class="extype" target="_top">MonadError</a>[<a href="Decoder.html" class="extype" name="io.circe.Decoder">Decoder</a>, <a href="DecodingFailure.html" class="extype" name="io.circe.DecodingFailure">DecodingFailure</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#io.circe.Decoder$@monadInstances:cats.SemigroupK[io.circe.Decoder]withcats.MonadError[io.circe.Decoder,io.circe.DecodingFailure]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"></p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>

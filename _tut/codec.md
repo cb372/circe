@@ -106,6 +106,47 @@ Greeting("Hey", Person("Chris"), 3).asJson
 // }
 ```
 
+## Custom key types
+
+If you need to encode/decode `Map[K, V]` where `K` is not `String`, you need to provide a `KeyEncoder` 
+and/or `KeyDecoder` for your custom key type.
+
+For example:
+
+```scala
+import io.circe.syntax._
+// import io.circe.syntax._
+
+case class Foo(value: String)
+// defined class Foo
+
+implicit val fooKeyEncoder = new KeyEncoder[Foo] {
+  override def apply(foo: Foo): String = foo.value
+}
+// fooKeyEncoder: io.circe.KeyEncoder[Foo] = $anon$1@3f27e841
+
+val map = Map[Foo, Int](
+  Foo("hello") -> 123,
+  Foo("world") -> 456
+)
+// map: scala.collection.immutable.Map[Foo,Int] = Map(Foo(hello) -> 123, Foo(world) -> 456)
+
+val json = map.asJson
+// json: io.circe.Json =
+// {
+//   "hello" : 123,
+//   "world" : 456
+// }
+
+implicit val fooKeyDecoder = new KeyDecoder[Foo] {
+  override def apply(key: String): Option[Foo] = Some(Foo(key))
+}
+// fooKeyDecoder: io.circe.KeyDecoder[Foo] = $anon$1@7a81d37a
+
+json.as[Map[Foo, Int]]
+// res5: io.circe.Decoder.Result[Map[Foo,Int]] = Right(Map(Foo(hello) -> 123, Foo(world) -> 456))
+```
+
 ## Warnings and known issues
 
 1. Please note that generic derivation will not work on Scala 2.10 unless you've added the [Macro
