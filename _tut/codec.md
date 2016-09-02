@@ -106,10 +106,51 @@ Greeting("Hey", Person("Chris"), 3).asJson
 // }
 ```
 
+## Custom encoders/decoders
+
+If you want to write your own codec instead of using automatic or semi-automatic derivation, you can
+do so in a couple of ways.
+
+Firstly, you can write a new `Encoder[A]` and `Decoder[A]` from scratch:
+
+```scala
+import cats.data.Xor
+// import cats.data.Xor
+
+class Thing()
+// defined class Thing
+
+implicit val encodeFoo = new Encoder[Thing] {
+  final def apply(a: Thing): Json = ??? // your implementation goes here
+}
+// encodeFoo: io.circe.Encoder[Thing] = $anon$1@590b0c64
+
+implicit val decodeFoo = new Decoder[Thing] {
+  final def apply(c: HCursor): Decoder.Result[Thing] = Xor.left(DecodingFailure("Not implemented yet", c.history))
+}
+// decodeFoo: io.circe.Decoder[Thing] = $anon$1@112f0863
+```
+
+But in many cases you might find it more convenient to piggyback on top of the decoders that are
+already available. For example, a codec for `java.time.Instant` might look like this:
+
+```scala
+import java.time.Instant
+// import java.time.Instant
+
+implicit val encodeInstant: Encoder[Instant] = Encoder.encodeString.contramap[Instant](i => i.toString)
+// encodeInstant: io.circe.Encoder[java.time.Instant] = io.circe.Encoder$$anon$12@4587667b
+
+implicit val decodeInstant: Decoder[Instant] = Decoder.decodeString.emap { str =>
+  Xor.catchNonFatal(Instant.parse(str)).leftMap(t => "Instant")
+}
+// decodeInstant: io.circe.Decoder[java.time.Instant] = io.circe.Decoder$$anon$21@5f67a407
+```
+
 ## Custom key types
 
-If you need to encode/decode `Map[K, V]` where `K` is not `String`, you need to provide a `KeyEncoder` 
-and/or `KeyDecoder` for your custom key type.
+If you need to encode/decode `Map[K, V]` where `K` is not `String` (or `Symbol`, `Int`, `Long`, etc.), 
+you need to provide a `KeyEncoder` and/or `KeyDecoder` for your custom key type.
 
 For example:
 
@@ -123,7 +164,7 @@ case class Foo(value: String)
 implicit val fooKeyEncoder = new KeyEncoder[Foo] {
   override def apply(foo: Foo): String = foo.value
 }
-// fooKeyEncoder: io.circe.KeyEncoder[Foo] = $anon$1@3f27e841
+// fooKeyEncoder: io.circe.KeyEncoder[Foo] = $anon$1@115538de
 
 val map = Map[Foo, Int](
   Foo("hello") -> 123,
@@ -141,7 +182,7 @@ val json = map.asJson
 implicit val fooKeyDecoder = new KeyDecoder[Foo] {
   override def apply(key: String): Option[Foo] = Some(Foo(key))
 }
-// fooKeyDecoder: io.circe.KeyDecoder[Foo] = $anon$1@7a81d37a
+// fooKeyDecoder: io.circe.KeyDecoder[Foo] = $anon$1@6d498d34
 
 json.as[Map[Foo, Int]]
 // res5: io.circe.Decoder.Result[Map[Foo,Int]] = Right(Map(Foo(hello) -> 123, Foo(world) -> 456))
