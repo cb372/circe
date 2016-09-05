@@ -15,8 +15,8 @@ provides instances for `List[A]`, `Option[A]`, and other generic types, but only
 
 ## Semi-automatic derivation
 
-Sometimes you might need to have an `Encoder` or `Decoder` defined in your code. In this case
-semi-automatic derivation can help, and it's easy to use. You'd write:
+Sometimes it's convenient to have an `Encoder` or `Decoder` defined in your code, and semi-automatic 
+derivation can help. You'd write:
 
 ```scala
 import io.circe._, io.circe.generic.semiauto._
@@ -36,7 +36,8 @@ implicit val fooEncoder: Encoder[Foo] = deriveEncoder
 
 ### @JsonCodec
 
-circe-generic includes a `@JsonCodec` annotation that simplifies the use of semi-automatic generic derivation:
+The circe-generic project includes a `@JsonCodec` annotation that simplifies the
+use of semi-automatic generic derivation:
 
 ```scala
 import io.circe.generic.JsonCodec, io.circe.syntax._
@@ -59,8 +60,8 @@ This works with both case classes and sealed trait hierarchies.
 
 ### forProductN helper methods
 
-It's possible to construct encoders and decoders for case class-like types in a relatively boilerplate-free way
-without generic derivation:
+It's also possible to construct encoders and decoders for case class-like types 
+in a relatively boilerplate-free way without generic derivation:
 
 ```scala
 case class User(id: Long, firstName: String, lastName: String)
@@ -78,7 +79,7 @@ object UserCodec {
 
 It's not as clean or as maintainable as generic derivation, but it's less magical, it requires nothing
 but circe-core, and if you need a custom name mapping it's currently the best solution
-(until configurable generic derivation is released in 0.5.0).
+(until configurable generic derivation is released in 0.6.0).
 
 ## Fully automatic derivation
 
@@ -123,12 +124,12 @@ class Thing()
 implicit val encodeFoo = new Encoder[Thing] {
   final def apply(a: Thing): Json = ??? // your implementation goes here
 }
-// encodeFoo: io.circe.Encoder[Thing] = $anon$1@590b0c64
+// encodeFoo: io.circe.Encoder[Thing] = $anon$1@2b696634
 
 implicit val decodeFoo = new Decoder[Thing] {
   final def apply(c: HCursor): Decoder.Result[Thing] = Xor.left(DecodingFailure("Not implemented yet", c.history))
 }
-// decodeFoo: io.circe.Decoder[Thing] = $anon$1@112f0863
+// decodeFoo: io.circe.Decoder[Thing] = $anon$1@7711f5a5
 ```
 
 But in many cases you might find it more convenient to piggyback on top of the decoders that are
@@ -139,12 +140,12 @@ import java.time.Instant
 // import java.time.Instant
 
 implicit val encodeInstant: Encoder[Instant] = Encoder.encodeString.contramap[Instant](i => i.toString)
-// encodeInstant: io.circe.Encoder[java.time.Instant] = io.circe.Encoder$$anon$12@4587667b
+// encodeInstant: io.circe.Encoder[java.time.Instant] = io.circe.Encoder$$anon$12@7ce531c6
 
 implicit val decodeInstant: Decoder[Instant] = Decoder.decodeString.emap { str =>
   Xor.catchNonFatal(Instant.parse(str)).leftMap(t => "Instant")
 }
-// decodeInstant: io.circe.Decoder[java.time.Instant] = io.circe.Decoder$$anon$21@5f67a407
+// decodeInstant: io.circe.Decoder[java.time.Instant] = io.circe.Decoder$$anon$21@6a568ca7
 ```
 
 ## Custom key types
@@ -164,7 +165,7 @@ case class Foo(value: String)
 implicit val fooKeyEncoder = new KeyEncoder[Foo] {
   override def apply(foo: Foo): String = foo.value
 }
-// fooKeyEncoder: io.circe.KeyEncoder[Foo] = $anon$1@115538de
+// fooKeyEncoder: io.circe.KeyEncoder[Foo] = $anon$1@3aff597
 
 val map = Map[Foo, Int](
   Foo("hello") -> 123,
@@ -182,7 +183,7 @@ val json = map.asJson
 implicit val fooKeyDecoder = new KeyDecoder[Foo] {
   override def apply(key: String): Option[Foo] = Some(Foo(key))
 }
-// fooKeyDecoder: io.circe.KeyDecoder[Foo] = $anon$1@6d498d34
+// fooKeyDecoder: io.circe.KeyDecoder[Foo] = $anon$1@3097096a
 
 json.as[Map[Foo, Int]]
 // res5: io.circe.Decoder.Result[Map[Foo,Int]] = Right(Map(Foo(hello) -> 123, Foo(world) -> 456))
